@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            background-image: url("./img/bg5.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            overflow-x: hidden;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h2 {
+            font-size: 80px;
+            font-weight: bold;
+            color: #c0202f;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+        .cloud-text {
+            font-size: 40px;
+            font-weight: bold;
+            color: #c0202f;
+            padding: 20px 35px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            background: linear-gradient(to right, #ffffff, #ff9a9e, #fad0c4, #a1c4fd);
+            border-radius: 100px;
+            border: 1px solid #ff9a9e;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            white-space: nowrap;
+        }
+        .cloud-text::before, .cloud-text::after {
+            content: "";
+            position: absolute;
+            background: linear-gradient(to bottom left, #ffffff, #ff9a9e, #fad0c4, #a1c4fd, transparent);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .cloud-text::before {
+            width: 40px;
+            height: 40px;
+            top: -20px;
+            left: 20%;
+        }
+        .cloud-text::after {
+            width: 50px;
+            height: 50px;
+            top: -25px;
+            right: 25%;
+        }
+        .center-controls {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 2px solid #c0202f;
+            width: 100%;
+            max-width: 450px;
+            box-sizing: border-box;
+        }
+        label {
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+        input {
+            border: 2px solid #c0202f;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .btn-concursar {
+            background-color: #c0202f;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(192, 32, 47, 0.4);
+        }
+        .btn-concursar:hover {
+            transform: scale(1.05);
+            background-color: #a01a27;
+        }
+        #responda {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #27ae60;
+            min-height: 24px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                justify-content: center;
+                gap: 40px;
+            }
+            .cloud-wrapper {
+                flex-direction: column !important;
+                gap: 25px !important;
+            }
+            .cloud-text {
+                font-size: 28px;
+                padding: 15px 30px;
+            }
+            .cloud-text::before { width: 25px; height: 25px; top: -12px; }
+            .cloud-text::after { width: 35px; height: 35px; top: -18px; }
+            h2 { font-size: 40px; }
+            label { font-size: 18px; }
+            .center-controls { padding: 25px 15px; }
+        }
+    </style>
+    <title>JS - 8.1</title>
+</head>
+<body>
+
+    <div class="cloud-wrapper flex flex-row gap-10">
+        <h2 class="cloud-text">FRIO</h2>
+        <h2 class="cloud-text">TIBIO</h2>
+        <h2 class="cloud-text text-caliente">CALIENTE</h2>
+    </div>
+
+    <div class="center-controls">
+        <label>Escribe un número entre 1 y 500:</label>
+        <input id="inputNumer" type="number" placeholder="numero 0...500" class="px-4 py-2" style="color: black !important;">
+        <button class="btn-concursar mt-5" onclick="concursar()" id="btn">ADIVINAR</button>
+        <p id="responda"></p>
+        <button class="btn-concursar mt-5" id="btnNuevo" style="display:none;" onclick="juegoNuevo()">Jugar otra vez</button>
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
